@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-paper-plane toppic-title-i"></i>
+                <span class="toppic-title-span">关于我们</span>
+                <p>About Us</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/" class="w-white">首页</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="#" class="w-white">关于我们</a></span>
+            </div>
+        </div>
+    </div>
+    <div class=" am-container-1">
+        <div class="part-title part-title-mar">
+            <a href="customer-case.html">
+                <i class=" am-icon-paper-plane part-title-i"></i>
+                <span class="part-title-span">关于{{ system.title }}</span>
+                <p>About us</p>
+            </a>
+        </div>
+        <div class="company-intro">
+            {{ system.about|raw }}
+        </div>
+    </div>
+    <div class=" am-container-1">
+        <div class="part-title part-title-mar">
+            <a href="customer-case.html">
+                <i class=" am-icon-comments-o part-title-i"></i>
+                <span class="part-title-span">联系我们</span>
+                <p>Contact Us</p>
+            </a>
+        </div>
+    </div>
+    <div class="gray-li">
+        <div class=" am-container-1">
+            <div class="contact-us">
+                <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
+                    <div id="allmap" style="height:200px"></div>
+                </div>
+                <div class="am-u-lg-6 am-u-md-6 am-u-sm-12">
+                    <ul class="contact-add">
+                        <li>
+                            <div><i class=" am-icon-map-marker"></i><span class="contact-add-1">{{ system.address }}</span></div>
+                        </li>
+                        <li>
+                            <div><i class=" am-icon-phone"></i><span>{{ system.phone }}</span></div>
+                        </li>
+                        <li>
+                            <div><i class=" am-icon-envelope-o"></i><span>{{ system.email }}</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DD279b2a90afdf0ae7a3796787a0742e"></script>
+    <script>
+    window.onload = function(){
+    	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(116.331398,39.897445);
+	map.centerAndZoom(point,12);
+	// 创建地址解析器实例
+	var myGeo = new BMap.Geocoder();
+	// 将地址解析结果显示在地图上,并调整地图视野
+	myGeo.getPoint("{{ system.address }}", function(point){
+		if (point) {
+			map.centerAndZoom(point, 16);
+			map.addOverlay(new BMap.Marker(point));
+		}else{
+			alert("您选择地址没有解析到结果!");
+		}
+	}, "北京市");
+    }
+    </script>
+{% endblock %}

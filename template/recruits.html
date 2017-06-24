@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-paper-plane toppic-title-i"></i>
+                <span class="toppic-title-span">招贤纳士</span>
+                <p>Recruit</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/" class="w-white">首页</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="#" class="w-white">招贤纳士</a></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class=" product-show-ul">
+            {% for key,item in recruits %}
+            {% if key/2==0 %}
+            <li>
+                <div class="product-content">
+                    <div class="left am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-left">
+                        <div class="product-show-title">
+                            <span>{{ item.title }}</span>
+                        </div>
+                        <div class="product-show-content">
+                            {{ item.content|raw }}
+                        </div>
+                    </div>
+                    <div class="right am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-right">
+                        <img class="product-img" src="{{ item.img }}" />
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </li>
+            {% else %}
+            <li class='gray-li'>
+                <div class="product-content">
+                    <div class="left am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-left">
+                        <img class="product-img" src="{{ item.img }}" />
+                    </div>
+                    <div class="right am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-right">
+                        <div class="product-show-title">
+                            <span>{{ item.title }}</span>
+                        </div>
+                        <div class="product-show-content">
+                            {{ item.content|raw }}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+            <div class="clear"></div>
+        </ul>
+    </div>
+{% endblock %}

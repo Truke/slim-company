@@ -1,0 +1,85 @@
+{% extends 'admin/main.html' %} {% block body %}
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+        <div class="caption font-green bold">
+            <span class="am-icon-cog"></span> 文章列表
+        </div>
+    </div>
+    <div class="tpl-block">
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="am-btn-toolbar">
+                    <div class="am-btn-group am-btn-group-sm">
+                        <a href="{{ add_href }}" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
+                    </div>
+                    <div class="am-btn-group am-u-md-3">
+                        <select id="selecttype" data-am-selected="{btnSize: 'sm'}">
+                            <option value="{{ this_route }}">所有类别</option>
+                            {% for k,v in cats %}
+                            <option value="{{ this_route }}?cat={{ k }}" {% if parent == k %}selected{% endif %}>{{ v }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-g">
+            <div class="am-u-sm-12" style="min-height: 400px">
+                {% if data|length > 0 %}
+                <table class="am-table am-table-striped am-table-hover table-main">
+                    <thead>
+                        <tr>
+                            <th width="5%" class="table-id">模块id</th>
+                            <th width="10%" class="table-uri">文章uri</th>
+                            <th width="10%" class="table-title">所属模块</th>
+                            <th width="55%" class="table-title">名称</th>
+                            <th class="table-set">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in data %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.uri }}</td>
+                            <td>{{ cats[item.parent] }}</td>
+                            <td>{{ item.title }}</td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <a href="{{ item.b_edit }}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                                        <a href="{{ item.b_delete }}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% block pages %} 
+                    {% if pagination.pages|length > 0 %}
+                        <div class="am-cf">
+                            <div class="am-fr">
+                                <ul class="am-pagination tpl-pagination">
+                                    {% for page,title in pagination.pages %}
+                                    <li{% if page==pagination.current %} class="am-active" {% endif %}><a href="{{ this_route }}page-{{ page }}/">{{ title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %} 
+                {% endblock %} 
+                {% else %}
+                    <div class="message info">暂无文章</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+window.onload = function(){
+    $(document).on('change','#selecttype',function(){
+        location.href = this.value;
+    })
+}
+</script>
+{% endblock %}

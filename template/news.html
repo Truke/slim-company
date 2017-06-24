@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-newspaper-o toppic-title-i"></i>
+                <span class="toppic-title-span">新闻动态</span>
+                <p>News</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/" class="w-white">首页</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="#" class="w-white">新闻动态</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="am-container-1 news-content-all">
+        <div class="left am-u-sm-12 am-u-md-8 am-u-lg-9 ">
+            <ul class="news-ul">
+                {% for key,item in news %}
+                <li class="am-u-sm-12 am-u-md-6 am-u-lg-4 ">
+                    <a href="/news/{{ item.uri }}.html">
+                        <div class="news-ul-liall">
+                            <img class="news-ul-liimg" src="{{ item.thumb }}" />
+                            <div class="inform-list">
+                                <div class="inform-list-date"><i class="am-icon-arrow-circle-right"></i>{{ item.published }}</div>
+                                <div class="inform-list-label"><i class="am-icon-arrow-circle-right"></i>{{ item.tag }}</div>
+                                <div class="inform-list-numb"><i class="am-icon-arrow-circle-right"></i>点击次数：273</div>
+                            </div>
+                            <span>{{ item.title }}</span>
+                            <p>{{ item.description }}</p>
+                            <span class="see-more3">查看更多<i class="am-icon-angle-double-right"></i></span>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+{% endblock %}

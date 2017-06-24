@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Blog admin</title>
+    <link rel="stylesheet" href="/css/amazeui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/admin.css" type="text/css">
+    <link rel="stylesheet" href="/css/admin.app.css" type="text/css">
+</head>
+
+<body data-type="login">
+    <div class="am-g myapp-login">
+        <div class="myapp-login-logo-block  tpl-login-max">
+            <div class="myapp-login-logo-text">
+                <div class="myapp-login-logo-text">
+                    <span> 管理系统登录</span> <i class="am-icon-skyatlas"></i>
+                </div>
+            </div>
+            <div class="login-font">
+                <i>忘记密码 </i>请联系<span>github.com/Truke</span>
+            </div>
+            <div class="am-u-sm-10 login-am-center">
+                <form class="am-form" action="?auth=login" method="post">
+                    <fieldset>
+                        <div class="am-form-group">
+                            <input type="text" name="name" class="" id="doc-ipt-user-1" placeholder="输入用户名">
+                        </div>
+                        <div class="am-form-group">
+                            <input type="password" name="pwd" class="" id="doc-ipt-pwd-1" placeholder="请输入密码">
+                        </div>
+                        <p>
+                            <button type="submit" class="am-btn am-btn-default">登录</button>
+                        </p>
+                        {% if message is defined %}
+                        <div class="message error">{{ message }}</div>
+                        <br> {% endif %}
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/scroll.js"></script>
+</body>
+</html>

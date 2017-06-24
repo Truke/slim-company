@@ -1,0 +1,41 @@
+{% extends 'main.html' %} 
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-paper-plane toppic-title-i"></i>
+                <span class="toppic-title-span">案例详情</span>
+                <p>Case Information</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/cases/" class="w-white">客户案例</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="#" class="w-white">案例详情</a></span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class=" product-show-ul">
+            <div class="product-content">
+                <div class="left am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-left case-left">
+                    <div class="product-show-title">
+                        <h3>{{ title }}</h3>
+                    </div>
+                    <div class="product-show-content">
+                        <div class="product-intro case-inform">
+                            <span>详情介绍：</span>
+                            <div>
+                                {{ content|raw }}
+                            </div>
+                            <i class="am-icon-tasks"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="right am-u-sm-12 am-u-md-6 am-u-lg-6 product-content-right">
+                    <img class="case-img" src="{{ img }}" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

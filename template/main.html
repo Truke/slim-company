@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>{{ meta_title }}</title>
+		<meta name="keywords" content="{{ meta_keywords }}">
+		<meta name="description" content="{{ meta_description }}">
+	<link rel="stylesheet" href="/css/amazeui.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+	<header class="am-topbar header">
+        <div class="am-container-1">
+            <div class="left hw-logo">
+                <img class=" logo" src="{{ system.logo }}"></img>
+            </div>
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+            <div class="am-collapse am-topbar-collapse right" id="doc-topbar-collapse">
+                <div class=" am-topbar-left am-form-inline am-topbar-right" role="search">
+                    <ul class="am-nav am-nav-pills am-topbar-nav hw-menu">
+                        <li {% if menu_selected == '/' %} class="hw-menu-active" {% endif %}><a href="/">首页</a></li>
+                        <li {% if menu_selected == '/solutions/' %} class="hw-menu-active" {% endif %}><a href="/solutions/">解决方案</a></li>
+                        <li {% if menu_selected == '/products/' %} class="hw-menu-active" {% endif %}><a href="/products/">产品展示 </a></li>
+                        <li {% if menu_selected == '/cases/' %} class="hw-menu-active" {% endif %}><a href="/cases/">客户案例</a></li>
+                        <li {% if menu_selected == '/services/' %} class="hw-menu-active" {% endif %}><a href="/services/">服务中心 </a></li>
+                        <li {% if menu_selected == '/news/' %} class="hw-menu-active" {% endif %}><a href="/news/">新闻动态 </a></li>
+                        <li {% if menu_selected == '/abouts/' %} class="hw-menu-active" {% endif %}><a href="/abouts/">关于我们</a></li>
+                        <li {% if menu_selected == '/recruits/' %} class="hw-menu-active" {% endif %}><a href="/recruits/">招贤纳士 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+	{% block body %}
+
+	{% endblock %}
+	<footer class="footer ">
+        <ul>
+            <li class="am-u-lg-4 am-u-md-4 am-u-sm-12 part-5-li2">
+                <div class="part-5-title">联系我们</div>
+                <div class="part-5-words2">
+                    <span>地址:{{ system.address }}</span>
+                    <span>邮箱:{{ system.email }}</span>
+                    <span><i class="am-icon-phone"></i><em >{{ system.phone }}</em></span> 
+                </div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </footer>
+	<!--[if lt IE 9]>
+	<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+	<script src="/assets/js/amazeui.ie8polyfill.min.js"></script>
+	<![endif]-->
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="/js/amazeui.min.js"></script>
+	<script src="/js/scroll.js"></script>
+</body>
+</html>

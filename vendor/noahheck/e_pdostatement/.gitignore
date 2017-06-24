@@ -1,0 +1,11 @@
+# Composer vendor directory
+vendor
+
+# Composer composer.lock file
+composer.lock
+
+# PHPUnit local config file
+tests/config/config.php
+
+# PHPUnit Test Coverage Report directory (if included in project)
+tests/coverage

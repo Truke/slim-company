@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-lightbulb-o toppic-title-i"></i>
+                <span class="toppic-title-span">方案详情</span>
+                <p>Information</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/solutions/" class="w-white">解决方案</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a class="w-white">方案详情</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="am-container-1">
+        <div class="words-title margin-t30">
+            <i class="am-icon-file-text file-text"></i><span>{{ title }}</span>
+        </div>
+    </div>
+    <div class="solution-inform">
+        <div class=" solution-inform-content-all">
+            <div class="solution-inform-content">
+                <p class="inform-content-p">{{ description }}</p>
+                <div class="solution-inform-content-img">
+                    <img src="{{ img }}" />
+                    <div class="clear"></div>
+                </div>
+                <div class="solution-inform-content-words">{{ content|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

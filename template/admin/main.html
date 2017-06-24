@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="/css/amazeui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/admin.css" type="text/css">
+    <link rel="stylesheet" href="/css/admin.app.css" type="text/css">
+</head>
+
+<body>
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+            <a href="javascript:;" class="tpl-logo">
+                <img src="/img/adminlogo.png" alt="">
+            </a>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+        </div>
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+                <li class="am-dropdown">
+                    <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
+                        <span class="tpl-header-list-user-nick">admin</span><span class="tpl-header-list-user-ico"> <img src="/img/user01.png"></span>
+                    </a>
+                </li>
+                <li><a href="?auth=logout" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="tpl-page-container tpl-page-header-fixed">
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                管理导航列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    {% for a,b in menu %}
+                        {% if b == '-' %}
+                            <li class="line"></li>
+                        {% else %}
+                            <li class="tpl-left-nav-item">
+                                <a href="{{ a }}" class="nav-link {% if menu_active == a %}active{% endif %}">
+                                    <span>{{ b }}</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="tpl-content-wrapper">
+            {% if message is defined %}
+                <div class="am-alert am-alert-warning" data-am-alert>
+                  <button type="button" class="am-close">&times;</button>
+                  <p><i class="am-icon-bell-o"></i> {{ message }}</p>
+                </div>
+            {% endif %}
+            {% block body %}
+
+            {% endblock %}
+        </div>
+    </div>
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="/js/amazeui.min.js"></script>
+    <script src="/js/scroll.js"></script>
+</body>
+
+</html>

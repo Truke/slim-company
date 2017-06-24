@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block body %}
+    <div class="toppic">
+        <div class="am-container-1">
+            <div class="toppic-title left">
+                <i class="am-icon-briefcase toppic-title-i"></i>
+                <span class="toppic-title-span">客户案例</span>
+                <p>Customer Case</p>
+            </div>
+            <div class="right toppic-progress">
+                <span><a href="/" class="w-white">首页</a></span>
+                <i class=" am-icon-arrow-circle-right w-white"></i>
+                <span><a href="#" class="w-white">客户案例</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="am-container-1">
+        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+  am-avg-md-3 am-avg-lg-4 am-gallery-bordered customer-case-ul" data-am-gallery="{  }">
+            {% for key,item in cases %}
+            <li>
+                <div class="am-gallery-item">
+                    <a href="/cases/{{ item.uri }}.html">
+                        <div class="customer-case-img">
+                            <img src="{{ item.thumb }}" />
+                        </div>
+                        <h3 class="am-gallery-title">{{ item.title }}</h3>
+                        <div class="am-gallery-desc gallery-words">{{ item.description }}</div>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

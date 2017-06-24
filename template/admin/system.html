@@ -1,0 +1,124 @@
+{% extends 'admin/main.html' %} 
+{% block body %}
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+        <div class="caption font-green bold">
+            <span class="am-icon-cog"></span> 系统设置
+        </div>
+    </div>
+    <div class="tpl-block">
+        <div class="am-g">
+            <div class="tpl-form-body tpl-form-line">
+                <form class="am-form tpl-form-line-form" action="{{ action }}" method="post">
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">网站名称 <span class="tpl-form-line-small-title">Title</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" class="tpl-form-input" placeholder="请输入标题文字" name="title" value="{{ data.title }}">
+                            <small>请填写网站标题。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO标题 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_title" type="text" value="{{ data.meta_title }}" placeholder="输入SEO标题">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO关键字 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_keywords" type="text" value="{{ data.meta_keywords }}" placeholder="输入SEO关键字">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO介绍 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_description" type="text" value="{{ data.meta_description }}" placeholder="输入SEO介绍">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="user-weibo" class="am-u-sm-3 am-form-label">logo <span class="tpl-form-line-small-title">Images</span></label>
+                        <div class="am-u-sm-9">
+                            <div class="am-form-group">
+                                <div class="tpl-form-file-img">
+                                    <input id="logoInput" type="hidden" name="logo" value="{{ data.logo }}">
+                                    {% if data.logo != null %}
+                                        <img id="logoImg" src="{{ data.logo }}" alt="">
+                                    {% else %}
+                                        <img id="logoImg" src="{{ data.logo }}" alt="">
+                                    {% endif %}
+                                </div>
+                                <button type="button" id="" class="am-btn am-btn-danger am-btn-sm  am-form-file">
+                                    <i class="am-icon-cloud-upload"></i> 上传logo<input id="uploadlogo" type="file" name="files[]" multiple=""></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">公司地址 <span class="tpl-form-line-small-title">address</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" name="address" value="{{ data.address }}" placeholder="输入公司地址">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">公司邮箱 <span class="tpl-form-line-small-title">email</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" name="email" value="{{ data.email }}" placeholder="输入公司邮箱">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">公司电话 <span class="tpl-form-line-small-title">phone</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" name="phone" value="{{ data.phone }}" placeholder="输入公司电话">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">关于我们 <span class="tpl-form-line-small-title">about</span></label>
+                        <div class="am-u-sm-9">
+                            <textarea class="mce" rows="10" id="user-intro" name="about" placeholder="请输入文章内容">{{ data.about }}</textarea>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <div class="am-u-sm-9 am-u-sm-push-3">
+                            <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src='/admin_js/tinymce/tinymce.min.js'></script>
+<script>
+window.onload = function() {
+    $(document).on('change', '#uploadlogo', function() {
+        var formData = new FormData();
+        formData.append("files[]", this.files[0]);
+        $.ajax({
+            url: '/admin/upload/logo/',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(returndata) {
+                var data = JSON.parse(returndata);
+                $('#logoInput').val('/'+data.files[0].url);
+                $('#logoImg').attr('src','/'+data.files[0].url);
+            },
+            error: function(returndata) {
+                alert(returndata);
+            }
+        })
+    })
+    tinymce.init({
+        selector: 'textarea.mce',
+        language: 'zh_CN',
+        toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
+        plugins: 'code',
+        menubar: false,
+        width: '99%'
+    });
+}
+
+</script>
+{% endblock %}

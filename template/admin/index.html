@@ -1,0 +1,85 @@
+{% extends 'admin/main.html' %}
+
+{% block body %}
+            <div class="row">
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat blue">
+                        <div class="visual">
+                            <i class="am-icon-comments-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{ solutionscont }} </div>
+                            <div class="desc"> 解决方案 </div>
+                        </div>
+                        <a class="more" href="/admin/articles/?cat=4"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat red">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{ productscont }} </div>
+                            <div class="desc"> 产品展示 </div>
+                        </div>
+                        <a class="more" href="/admin/articles/?cat=5"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat green">
+                        <div class="visual">
+                            <i class="am-icon-list"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{ casescont }} </div>
+                            <div class="desc"> 案例展示 </div>
+                        </div>
+                        <a class="more" href="/admin/articles/?cat=6"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat purple">
+                        <div class="visual">
+                            <i class="am-icon-eye"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number"> {{ newscont }} </div>
+                            <div class="desc"> 新闻动态 </div>
+                        </div>
+                        <a class="more" href="/admin/articles/?cat=8"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="am-u-sm-12 row-mb">
+                    <div class="tpl-portlet">
+                        <div class="portlet-title">
+                            <div class="caption font-green bold">
+                                <span class="am-icon-log"></span> 最近操作日志
+                            </div>
+                        </div>
+                        <div class="tpl-block">
+                            <ul class="tpl-task-list tpl-task-remind">
+                                {% for item in logs %}
+                                    <li>
+                                        <div class="cosA">
+                                            <span>{{ item }}</span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+{% endblock %}

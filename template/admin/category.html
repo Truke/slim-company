@@ -1,0 +1,56 @@
+{% extends 'admin/main.html' %}
+
+{% block body %}
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+        <div class="caption font-green bold">
+            <span class="am-icon-cog"></span> {% if data.id>0 %}模块编辑{% else %}新增模块{% endif %}
+        </div>
+    </div>
+    <div class="tpl-block">
+        <div class="am-g">
+            <div class="tpl-form-body tpl-form-line">
+                <form class="am-form tpl-form-line-form" action="{{ action }}" method="post">
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">模块名称 <span class="tpl-form-line-small-title">Title</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" class="tpl-form-input" placeholder="请输入标题文字" name="title" value="{{ data.title }}">
+                            <small>请填写模块标题。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">URI <span class="tpl-form-line-small-title">uri</span></label>
+                        <div class="am-u-sm-9">
+                            <input type="text" class="tpl-form-input" placeholder="请输入URI" name="uri" value="{{ data.uri }}">
+                            <small>必须是英文单词。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO标题 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_title" type="text" value="{{ data.meta_title }}" placeholder="输入SEO标题">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO关键字 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_keywords" type="text" value="{{ data.meta_keywords }}" placeholder="输入SEO关键字">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label class="am-u-sm-3 am-form-label">SEO介绍 <span class="tpl-form-line-small-title">SEO</span></label>
+                        <div class="am-u-sm-9">
+                            <input name="meta_description" type="text" value="{{ data.meta_description }}" placeholder="输入SEO介绍">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <div class="am-u-sm-9 am-u-sm-push-3">
+                            <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

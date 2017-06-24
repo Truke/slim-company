@@ -1,0 +1,8 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "monolog/monolog": "^1.20",
+        "twig/twig": "~1.0",
+        "noahheck/e_pdostatement": "2.*"
+    }
+}
